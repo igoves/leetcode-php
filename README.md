@@ -1,7 +1,7 @@
 # Leetcode PHP
 Solution of Leetcode on PHP
 
-## Easy level
+## EASY LEVEL
 
 #### 1. Two Sum
 <details>
@@ -368,7 +368,7 @@ function plusOne($digits) {
 </details><br/><br/>
 
 
-## Medium level
+## MEDIUM LEVEL
 
 #### 2. Add Two Numbers
 <details>
@@ -389,7 +389,7 @@ function addTwoNumbers($l1, $l2) {
 </details><br/><br/>
 
 
-## Hard level
+## HARD LEVEL
 
 	
 #### 65. Valid Number 
