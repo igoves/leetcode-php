@@ -73,7 +73,7 @@ function romanToInt($s) {
         'm' => 900,
     ];
 
-	$special = [
+    $special = [
         'IV' => 'v',
         'IX' => 'x',
         'XL' => 'l',
@@ -82,17 +82,17 @@ function romanToInt($s) {
         'CM' => 'm',
     ];
 
-	foreach ($special as $k => $v) {
+    foreach ($special as $k => $v) {
         $s = str_replace($k, $v, $s);
-	}
+    }
 
-	$number = 0;
-	$s = str_split($s);
-	foreach ($s as $item) {
-		$number += $map[$item];
-	}
+    $number = 0;
+    $s = str_split($s);
+    foreach ($s as $item) {
+        $number += $map[$item];
+    }
 
-	return $number;
+    return $number;
 }
 ```
 </details><br/>
@@ -105,22 +105,22 @@ function romanToInt($s) {
 ```php
 function longestCommonPrefix($strs) {
     $first = array_shift($strs);
-	$first = str_split($first);
-	$length = count($first);
-	$prefix = '';
-	for($i=0;$i<=$length;$i++){
-		foreach($strs as $str){
-			if(!isset($str[$i])){
-				break 2;
-			}
-			if($str[$i] != $first[$i]){
-				break 2;
-			}
-		}
-		
-		$prefix .=$first[$i];
-	}
-	return $prefix;
+    $first = str_split($first);
+    $length = count($first);
+    $prefix = '';
+    for($i=0;$i<=$length;$i++){
+        foreach($strs as $str){
+            if(!isset($str[$i])){
+                break 2;
+            }
+            if($str[$i] != $first[$i]){
+                break 2;
+            }
+        }
+        
+        $prefix .=$first[$i];
+    }
+    return $prefix;
 }
 ```
 </details><br/>
@@ -131,32 +131,32 @@ function longestCommonPrefix($strs) {
   
 ```php
 function isValid($s) {
-	$s = trim($s);
-	if (!$s) {
-	  return true;
-	}
-	if (strlen($s) === 1) {
-	  return false;
-	}
+    $s = trim($s);
+    if (!$s) {
+      return true;
+    }
+    if (strlen($s) === 1) {
+      return false;
+    }
 
-	$brackets = [
-	  '[' => ']',
-	  '(' => ')',
-	  '{' => '}',
-	];
+    $brackets = [
+      '[' => ']',
+      '(' => ')',
+      '{' => '}',
+    ];
 
-	for ($stack = [], $length = strlen($s), $i = 0; $i < $length; $i++) {
-	  $symbol = $s[$i];
-	  if (array_key_exists($symbol, $brackets)) {
-		$stack[] = $symbol;
-	  } else {
-		$lastInStack = array_pop($stack);
-		if (!isset($brackets[$lastInStack]) || $symbol !== $brackets[$lastInStack]) {
-		  return false;
-		}
-	  }
-	}
-	return (count($stack) === 0) ? true : false;
+    for ($stack = [], $length = strlen($s), $i = 0; $i < $length; $i++) {
+      $symbol = $s[$i];
+      if (array_key_exists($symbol, $brackets)) {
+        $stack[] = $symbol;
+      } else {
+        $lastInStack = array_pop($stack);
+        if (!isset($brackets[$lastInStack]) || $symbol !== $brackets[$lastInStack]) {
+          return false;
+        }
+      }
+    }
+    return (count($stack) === 0) ? true : false;
 }
 ```
 </details><br/>
@@ -225,16 +225,16 @@ class Solution {
   
 ```php
 function removeDuplicates(&$nums) {
-	$lenght = count($nums);
-	if ( $lenght === 0 ) return 0;
-	$i = 0;
-	for ( $j = 1; $j < $lenght ; $j ++ ) {
-		if ( $nums[$j] != $nums[$i] ) {
-			$i ++;
-			$nums[$i] = $nums[$j];
-		}
-	}
-	return $i + 1;
+    $lenght = count($nums);
+    if ( $lenght === 0 ) return 0;
+    $i = 0;
+    for ( $j = 1; $j < $lenght ; $j ++ ) {
+        if ( $nums[$j] != $nums[$i] ) {
+            $i ++;
+            $nums[$i] = $nums[$j];
+        }
+    }
+    return $i + 1;
 }
 ```
 </details><br/>
@@ -246,12 +246,12 @@ function removeDuplicates(&$nums) {
   
 ```php
 function removeElement(&$nums, $val) {
-	foreach ($nums as $k => $v) {
-		if ( $v === $val ) {
-			unset($nums[$k]);
-		}
-	}
-	return count($nums);
+    foreach ($nums as $k => $v) {
+        if ( $v === $val ) {
+            unset($nums[$k]);
+        }
+    }
+    return count($nums);
 }
 ```
 </details><br/>
@@ -263,23 +263,23 @@ function removeElement(&$nums, $val) {
   
 ```php
 function strStr($haystack, $needle) {
-			
-	if(strlen($needle) == 0) return 0;
-	if(strlen($haystack) == 0) return -1;
-	
-	if(strlen($haystack) == 1 && strlen($needle) == 1){
-		if($haystack[0] == $needle[0]){
-			return 0;
-		}
-	}
-	
-	for($i = 0; $i < strlen($haystack) - strlen($needle) + 1; $i++){
-		if($needle === substr($haystack, $i, strlen($needle))){
-			return $i;
-		}
-	}
-	return -1; 
-	
+            
+    if(strlen($needle) == 0) return 0;
+    if(strlen($haystack) == 0) return -1;
+    
+    if(strlen($haystack) == 1 && strlen($needle) == 1){
+        if($haystack[0] == $needle[0]){
+            return 0;
+        }
+    }
+    
+    for($i = 0; $i < strlen($haystack) - strlen($needle) + 1; $i++){
+        if($needle === substr($haystack, $i, strlen($needle))){
+            return $i;
+        }
+    }
+    return -1; 
+    
 }
 ```
 </details><br/>
@@ -291,12 +291,12 @@ function strStr($haystack, $needle) {
   
 ```php
 function searchInsert($nums, $target) {
-	for($i = 0; $i < count($nums) && $nums[$i] <= $target; $i++) {
-		if ($nums[$i] == $target) {
-			return $i;
-		}
-	}
-	return $i; 
+    for($i = 0; $i < count($nums) && $nums[$i] <= $target; $i++) {
+        if ($nums[$i] == $target) {
+            return $i;
+        }
+    }
+    return $i; 
 }
 ```
 </details><br/>
@@ -308,13 +308,13 @@ function searchInsert($nums, $target) {
   
 ```php
 function maxSubArray($nums) {
-	$sum = $nums[0];
-	$max = $sum;
-	for($i = 1, $n = count($nums); $i < $n; $i ++){
-		$sum = $nums[$i] > $nums[$i]+$sum ? $nums[$i] : $nums[$i]+$sum;
-		$max = $max > $sum ? $max : $sum;
-	}
-	return $max;
+    $sum = $nums[0];
+    $max = $sum;
+    for($i = 1, $n = count($nums); $i < $n; $i ++){
+        $sum = $nums[$i] > $nums[$i]+$sum ? $nums[$i] : $nums[$i]+$sum;
+        $max = $max > $sum ? $max : $sum;
+    }
+    return $max;
 }
 ```
 </details><br/>
@@ -326,21 +326,21 @@ function maxSubArray($nums) {
   
 ```php
 function lengthOfLastWord($s) {
-	$length = 0;
-	$first = false;
-	for ($i = strlen($s) - 1; $i >= 0; $i--) {
-		if ($s[$i] == ' ' && $first) {
-			return $length;
-		} else if ($s[$i] != ' ') {
-			$first = true;
-			$length++;
-		}
-	}
-	return $length;
+    $length = 0;
+    $first = false;
+    for ($i = strlen($s) - 1; $i >= 0; $i--) {
+        if ($s[$i] == ' ' && $first) {
+            return $length;
+        } else if ($s[$i] != ' ') {
+            $first = true;
+            $length++;
+        }
+    }
+    return $length;
 }
 ```
 </details><br/>
-	
+    
 
 #### 66. Plus One
 <details>
@@ -348,21 +348,21 @@ function lengthOfLastWord($s) {
   
 ```php
 function plusOne($digits) {
-	$carry=1;
-	for($i = count($digits)-1; $i>=0; $i--){
-		$temp = ($digits[$i]+$carry)%10;
-		$carry = intval(($digits[$i]+$carry)/10);
-		$digits[$i] = $temp;
-	}
-	if($carry == 0) return $digits;
-	else{
-		$res = array_fill(0, count($digits) + 1, 0);
-		$res[0] = $carry;
-		for($i=0; $i<count($digits); $i++){
-			$res[$i+1] = $digits[$i];
-		}
-		return $res;
-	}
+    $carry=1;
+    for($i = count($digits)-1; $i>=0; $i--){
+        $temp = ($digits[$i]+$carry)%10;
+        $carry = intval(($digits[$i]+$carry)/10);
+        $digits[$i] = $temp;
+    }
+    if($carry == 0) return $digits;
+    else{
+        $res = array_fill(0, count($digits) + 1, 0);
+        $res[0] = $carry;
+        for($i=0; $i<count($digits); $i++){
+            $res[$i+1] = $digits[$i];
+        }
+        return $res;
+    }
 }
 ```
 </details><br/><br/>
@@ -376,14 +376,14 @@ function plusOne($digits) {
   
 ```php
 function addTwoNumbers($l1, $l2) {
-	$node = new ListNode($this->res + $l1->val + $l2->val);
-	if( $this->res = intval($node->val > 9) ) { 
-		$node->val -=10;
-	}
-	$node->next = (!$this->res && is_null($l1->next) && is_null($l2->next) ) ?
-		null : $this->addTwoNumbers($l1->next,$l2->next);
-		
-	return $node;
+    $node = new ListNode($this->res + $l1->val + $l2->val);
+    if( $this->res = intval($node->val > 9) ) { 
+        $node->val -=10;
+    }
+    $node->next = (!$this->res && is_null($l1->next) && is_null($l2->next) ) ?
+        null : $this->addTwoNumbers($l1->next,$l2->next);
+        
+    return $node;
 }
 ```
 </details><br/><br/>
@@ -391,14 +391,14 @@ function addTwoNumbers($l1, $l2) {
 
 ## HARD LEVEL
 
-	
+    
 #### 65. Valid Number 
 <details>
   <summary>show solution</summary>
   
 ```php
 function isNumber($s) {
-	return $s === '' || (count($s) === 1 && !is_numeric($s)) ? false : true;
+    return $s === '' || (count($s) === 1 && !is_numeric($s)) ? false : true;
 }
 ```
 </details><br/>
