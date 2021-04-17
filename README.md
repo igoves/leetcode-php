@@ -365,6 +365,178 @@ function plusOne($digits) {
     }
 }
 ```
+</details><br/>
+
+
+#### 67. Add Binary
+<details>
+  <summary>show solution</summary>
+  
+```php
+function addBinary($a, $b) {
+    $sb = "";
+    $i = strlen($a) - 1;
+    $j = strlen($b) - 1;
+    $carry = 0;
+    while($i >= 0 || $j >= 0 || $carry > 0)
+    {
+        $sum = $carry;
+        if($i >= 0) $sum += ord($a[$i--]) - ord('0');
+        if($j >= 0) $sum += ord($b[$j--]) - ord('0');
+        $sb .= chr($sum % 2 + ord('0'));
+        $carry = intval($sum / 2);
+    }
+    return strrev($sb);
+}
+```
+</details><br/>
+
+#### 69. Sqrt(x)
+<details>
+  <summary>show solution</summary>
+  
+```php
+function mySqrt($x) {
+    return (int)sqrt($x);
+}
+```
+</details><br/>
+
+
+#### 70. Climbing Stairs
+<details>
+  <summary>show solution</summary>
+  
+```php
+function climbStairs($n) {
+    if ($n == 2) 
+        return 2;
+    else if ($n == 1)
+        return 1;
+    
+    $a = 0;
+    $b = 1;
+    $c = 0;
+    for ($i = 0; $i < $n; $i++)
+    {
+        $c = $a + $b;
+        $a = $b;
+        $b = $c;
+    }
+    return $c;  
+}
+```
+</details><br/>
+
+#### 83. Remove Duplicates from Sorted List
+<details>
+  <summary>show solution</summary>
+  
+```php
+function deleteDuplicates($head) {
+    if($head==null || $head->next == null) return $head;
+    $prev = $head;
+    $node = $head->next;
+    while( $node!= null){
+        if($node->val != $prev->val){
+            $prev = $node;
+            $node = $node->next;
+        }else{
+            $prev->next = $node->next;
+            $node = $node->next;
+        }
+    }
+    return $head;
+}
+```
+</details><br/>
+
+
+#### 88. Merge Sorted Array
+<details>
+  <summary>show solution</summary>
+  
+```php
+function merge(&$nums1, $m, $nums2, $n) {
+    $i = $m-1; $j = $n-1; $x = count($nums1);
+    for($c = count($nums1) - 1; $c >= 0; $c--) {
+        if ($i>=0 && $j>=0 && $nums1[$i] >= $nums2[$j]) {
+            $nums1[$c] = $nums1[$i];
+            --$i;
+        } else if ($i>=0 && $j>=0 && $nums2[$j] > $nums1[$i]) {
+            $nums1[$c] = $nums2[$j];
+            --$j;
+        } else if($i<0 && $j>=0) {
+            $nums1[$c] = $nums2[$j];
+            --$j;
+        } else {
+            $nums1[$c] = $nums1[$i];
+            --$i;
+        }
+    }
+}
+```
+</details><br/>
+
+
+#### 100. Same Tree
+<details>
+  <summary>show solution</summary>
+  
+```php
+function isSameTree($p, $q) {
+    if($p == null && $q == null)
+        return true;
+    
+    if($p == null || $q == null)
+        return false;
+    
+    return ($p->val == $q->val) && self::isSameTree($p->left, $q->left) && self::isSameTree($p->right,$q->right);   
+}
+```
+</details><br/>
+
+#### 101. Symmetric Tree
+<details>
+  <summary>show solution</summary>
+  
+```php
+class Solution {
+
+    /**
+     * @param TreeNode $root
+     * @return Boolean
+     */
+    function isSymmetric($root) {
+        //1. Top empty, return symmetric!
+        if($root == null) return true;
+        
+        //2. Recursion method: Single null always symm, so just put kids in.
+        return self::helper($root->left, $root->right);
+    }
+    
+    function helper($left, $right){
+        //3. Both must be null, or false
+        if($left==null || $right==null)
+            return $left==$right;
+        
+        //4. Check values and next level of children
+        return $left->val==$right->val && self::helper($left->left, $right->right) && self::helper($left->right, $right->left);
+    }
+}
+```
+</details><br/>
+
+#### 104. Maximum Depth of Binary Tree
+<details>
+  <summary>show solution</summary>
+  
+```php
+function maxDepth($root) {
+    if($root == null) return 0;
+    return 1 + max(self::maxDepth($root->left), self::maxDepth($root->right) );   
+}
+```
 </details><br/><br/>
 
 
